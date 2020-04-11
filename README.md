@@ -8,7 +8,7 @@ cp backend.env .env
 
 Add your SurveyMonkey token to the `.env` file to be able to make SurveyMonkey API calls.
 
-Run the DB
+Run the DB (in a separate tab)
 ```bash
 docker-compose build
 docker-compose run db
@@ -16,6 +16,7 @@ docker-compose run db
 
 Run the Django app:
 ```bash
+pipenv install -d
 pipenv run python manage.py makemigrations
 pipenv run python manage.py migrate 
 pipenv run python manage.py runserver

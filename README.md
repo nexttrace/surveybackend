@@ -2,7 +2,10 @@
 This app uses pipenv to manage python dependencies, and Docker to manage running the DB.
 
 Set environment variables
-```cp backend.env .env```
+```bash
+cp backend.env .env
+```
+
 Add your SurveyMonkey token to the `.env` file to be able to make SurveyMonkey API calls.
 
 Run the DB

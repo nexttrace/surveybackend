@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    restart: always
+    ports:
+      - "5432:5432"
+    image: postgres:11
+    env_file:
+      - db.env
+    volumes:
+      - local-db:/var/lib/postgresql/data
+
+volumes:
+  local-db:

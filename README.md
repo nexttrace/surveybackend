@@ -11,7 +11,7 @@ Add your SurveyMonkey token to the `.env` file to be able to make SurveyMonkey A
 Run the DB (in a separate tab)
 ```bash
 docker-compose build
-docker-compose run db
+docker-compose up
 ```
 
 Run the Django app:

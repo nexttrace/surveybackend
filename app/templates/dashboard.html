@@ -1,0 +1,17 @@
+<h2>Dashboard</h2>
+
+Number of positive test results recorded: {{ num_positive_results }}
+<br/>
+Number of contacts reported: {{ num_reported_contacts }}
+<br/>
+Number of completed surveys: {{ num_completed_forms }}
+<br/>
+Number of unused unique codes: {{ list_unused_codes | length }}
+<br/>
+Positive cases who have not filled out survey:
+<ol>
+    {% for p in list_unused_codes %}
+        <li>{{p.name}}, {{p.phone_number}} (Code: {{p.code}})</li>
+    {% endfor %}
+</ol>
+<br/>

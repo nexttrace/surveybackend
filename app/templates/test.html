@@ -1,0 +1,7 @@
+Please fill out the following information about the positive test result:
+
+<form action="/app/test" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>

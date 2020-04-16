@@ -1,14 +1,24 @@
 version: '3'
+
 services:
-  db:
-    restart: always
+  app:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/src
     ports:
-      - "5432:5432"
-    image: postgres:11
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:12
     env_file:
       - db.env
     volumes:
-      - local-db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5432:54322"
 
 volumes:
-  local-db:
+  db:

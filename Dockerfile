@@ -6,4 +6,4 @@ COPY Pipfile* /src/
 RUN pipenv install --system --deploy
 
 COPY . /src
-CMD python manage.py runserver
+CMD gunicorn surveybackend.wsgi -b :$PORT

@@ -9,7 +9,7 @@ verify_ssl = true
 django = "==3.0.5"
 psycopg2-binary = "==2.8.5"
 requests = "==2.23.0"
-twilio = "==2.23.0"
+twilio = "~=6.38"
 
 [requires]
 python_version = "3.8"

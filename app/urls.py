@@ -14,5 +14,7 @@ urlpatterns = [
     path('thanks', views.thanks),
     # Dashboard that shows stats based on data in DB
     path('dashboard', views.dashboard),
+    # Data in JSON form for dashboard
+    path('dashboard_data', views.dashboard_data),
 ]
 

@@ -10,7 +10,7 @@ from django.shortcuts import render
 from random import randint
 from datetime import datetime
 from app.forms import PositiveTestForm
-
+from django.forms.models import model_to_dict
 
 CONTRACT_TRACING_FORM_URL = "https://survey.nexttrace.now.sh/formstack/"
 
@@ -148,16 +148,24 @@ def sms_reply(request):
     return HttpResponse(str(resp))
 
 
-def dashboard(request):
+def get_stats():
     num_positive_results = SurveyInvitation.objects.count()
     num_reported_contacts = Contact.objects.count()
     num_completed_forms = SurveyResponse.objects.count()
     list_unused_codes = SurveyInvitation.objects.filter(date_used=None)
-
-    data = {
+    return {
         "num_positive_results": num_positive_results,
         "num_reported_contacts": num_reported_contacts,
         "num_completed_forms": num_completed_forms,
         "list_unused_codes": list_unused_codes,
     }
-    return render(request, 'dashboard.html', data)
+
+
+def dashboard(request):
+    return render(request, 'dashboard.html', get_stats())
+
+
+def dashboard_data(request):
+    data = get_stats()
+    data["list_unused_codes"] = [model_to_dict(obj) for obj in data["list_unused_codes"]]
+    return JsonResponse(data)

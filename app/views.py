@@ -2,7 +2,7 @@ import json
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from app.models import SurveyResponse, Contact, SurveyInvitation
-from surveybackend.settings import TWILIO_SID, TWILIO_AUTH_TOKEN
+from surveybackend.settings import TWILIO_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER
 from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
 from django.http import HttpResponseRedirect
@@ -11,8 +11,6 @@ from random import randint
 from datetime import datetime
 from app.forms import PositiveTestForm
 
-
-TWILIO_NUMBER = "+12563635257"
 
 CONTRACT_TRACING_FORM_URL = "https://survey.nexttrace.now.sh/formstack/"
 
@@ -116,7 +114,7 @@ def send_text(phone, text_message):
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
     message = client.messages.create(
                  body=text_message,
-                 from_=TWILIO_NUMBER,
+                 from_=TWILIO_FROM_NUMBER,
                  to=phone
             )
 

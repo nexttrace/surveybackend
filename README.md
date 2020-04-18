@@ -6,7 +6,7 @@ Set environment variables
 cp backend.env .env
 ```
 
-Add your SurveyMonkey token to the `.env` file to be able to make SurveyMonkey API calls.
+Fill in the empty variables in the `.env` file to be able to run the full backend.
 
 Run the DB (in a separate tab)
 ```bash

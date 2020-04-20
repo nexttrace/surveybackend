@@ -1,0 +1,5 @@
+#!/bin/bash
+set -eo pipefail
+
+python manage.py migrate
+gunicorn surveybackend.wsgi -b :${PORT:-8000}
